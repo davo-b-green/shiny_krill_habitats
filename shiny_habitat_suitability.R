@@ -71,8 +71,8 @@ server <- function(input, output, session) {
       output$temp_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   numericInput("temp_midpoint", "Suitability threshold", value = 3.03),
-                   numericInput("temp_steepness", "Suitability slope", value = 2.2)
+                   sliderInput("temp_midpoint", "Suitability threshold", min = 0, max = 10, value = 3.03, step = 0.1),
+                   sliderInput("temp_steepness", "Suitability slope", min = 0, max = 10, value = 2.2, step = 0.1)
                  )
         )
       })
@@ -80,8 +80,8 @@ server <- function(input, output, session) {
       output$temp_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   numericInput("temp_mean", "Suitability mean", value = 1),
-                   numericInput("temp_variance", "Suitability variance", value = 0)
+                   sliderInput("temp_mean", "Suitability mean", min = 0, max = 10, value = 1, step = 0.1),
+                   sliderInput("temp_variance", "Suitability variance", min = 0, max = 10, value = 0, step = 0.1)
                  )
         )
       })
@@ -93,8 +93,8 @@ server <- function(input, output, session) {
       output$chl_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   numericInput("chl_midpoint", "Suitability threshold", value = 10),
-                   numericInput("chl_steepness", "Suitability slope", value = 1)
+                   sliderInput("chl_midpoint", "Suitability threshold", min = 0, max = 10, value = 10, step = 0.1),
+                   sliderInput("chl_steepness", "Suitability slope", min = 0, max = 10, value = 1, step = 0.1)
                  )
         )
       })
@@ -102,8 +102,8 @@ server <- function(input, output, session) {
       output$chl_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   numericInput("chl_mean", "Suitability mean", value = 1),
-                   numericInput("chl_variance", "Suitability variance", value = 0)
+                   sliderInput("chl_mean", "Suitability mean", min = -10, max = 10, value = 1, step = 0.1),
+                   sliderInput("chl_variance", "Suitability variance", min = -10, max = 10, value = 0, step = 0.1)
                  )
         )
       })
@@ -111,7 +111,7 @@ server <- function(input, output, session) {
       output$chl_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   numericInput("chl_slope", "Suitability slope", value = 196.3)
+                   sliderInput("chl_slope", "Suitability slope", min = 0, max = 500, value = 196.3, step = 0.1)
                  )
         )
       })
@@ -123,8 +123,8 @@ server <- function(input, output, session) {
       output$ice_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   numericInput("ice_midpoint", "Suitability threshold", value = -10),
-                   numericInput("ice_steepness", "Suitability slope", value = 0.4)
+                   sliderInput("ice_midpoint", "Suitability threshold", min = -20, max = 20, value = -10, step = 0.1),
+                   sliderInput("ice_steepness", "Suitability slope", min = -10, max = 10, value = 0.4, step = 0.1)
                  )
         )
       })
@@ -132,8 +132,8 @@ server <- function(input, output, session) {
       output$ice_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   numericInput("ice_mean", "Suitability mean", value = 1),
-                   numericInput("ice_variance", "Suitability variance", value = 0)
+                   sliderInput("ice_mean", "Suitability mean", min = 0, max = 10, value = 1, step = 0.1),
+                   sliderInput("ice_variance", "Suitability variance", min = 0, max = 10, value = 0, step = 0.1)
                  )
         )
       })
