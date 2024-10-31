@@ -71,8 +71,8 @@ server <- function(input, output, session) {
       output$temp_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   sliderInput("temp_midpoint", "Suitability threshold", min = 0, max = 10, value = 3.03, step = 0.1),
-                   sliderInput("temp_steepness", "Suitability slope", min = 0, max = 10, value = 2.2, step = 0.1)
+                   sliderInput("temp_midpoint", "Suitability threshold", min = -10, max = 10, value = 3.03, step = 0.1),
+                   sliderInput("temp_steepness", "Suitability slope", min = -10, max = 10, value = 2.2, step = 0.1)
                  )
         )
       })
@@ -80,8 +80,8 @@ server <- function(input, output, session) {
       output$temp_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   sliderInput("temp_mean", "Suitability mean", min = 0, max = 10, value = 1, step = 0.1),
-                   sliderInput("temp_variance", "Suitability variance", min = 0, max = 10, value = 0, step = 0.1)
+                   sliderInput("temp_mean", "Suitability mean", min = -10, max = 10, value = 1, step = 0.1),
+                   sliderInput("temp_variance", "Suitability variance", min = -10, max = 10, value = 0, step = 0.1)
                  )
         )
       })
@@ -93,8 +93,8 @@ server <- function(input, output, session) {
       output$chl_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   sliderInput("chl_midpoint", "Suitability threshold", min = 0, max = 10, value = 10, step = 0.1),
-                   sliderInput("chl_steepness", "Suitability slope", min = 0, max = 10, value = 1, step = 0.1)
+                   sliderInput("chl_midpoint", "Suitability threshold", min = -10, max = 10, value = 10, step = 0.1),
+                   sliderInput("chl_steepness", "Suitability slope", min = -10, max = 10, value = 1, step = 0.1)
                  )
         )
       })
@@ -132,8 +132,8 @@ server <- function(input, output, session) {
       output$ice_params <- renderUI({
         tags$div(style = 'margin-left: 20px;',
                  tagList(
-                   sliderInput("ice_mean", "Suitability mean", min = 0, max = 10, value = 1, step = 0.1),
-                   sliderInput("ice_variance", "Suitability variance", min = 0, max = 10, value = 0, step = 0.1)
+                   sliderInput("ice_mean", "Suitability mean", min = -10, max = 10, value = 1, step = 0.1),
+                   sliderInput("ice_variance", "Suitability variance", min = -10, max = 10, value = 0, step = 0.1)
                  )
         )
       })
@@ -274,7 +274,7 @@ server <- function(input, output, session) {
     
     # Render suitability functions plot for temperature
     output$temp_plot <- renderPlot({
-      x_vals <- seq(0, 10, length.out = 100)
+      x_vals <- seq(-1.8, 10, length.out = 100)
       temp_curve <- switch(input$temp_eq,
                            "Sigmoid" = sigmoid(x_vals, input$temp_midpoint, input$temp_steepness),
                            "Lognormal" = lognormal(x_vals, input$temp_mean, input$temp_variance)
