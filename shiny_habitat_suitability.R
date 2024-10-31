@@ -196,6 +196,7 @@ server <- function(input, output, session) {
     chl_data <- ncvar_get(nc_chl, "dymvar")[,,timestep]
     ice_data <- ncvar_get(nc_ice, "siconc")[,,timestep]
     ice_data[is.na(ice_data)] <- 0
+    ice_data[ice_data<0.001] <- 0
     
     lon <- nc_temp$dim$lon$vals
     lat <- nc_temp$dim$lat$vals
