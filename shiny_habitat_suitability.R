@@ -226,7 +226,7 @@ server <- function(input, output, session) {
                        "No effect" = 1
     )
     # Calculate habitat suitability
-    suitability <- temp_data * sigmoid((chl_data + ice_data) * -1, -0.5, 4)
+    suitability <- temp_data * sigmoid((chl_data + ice_data), -4 , 0.5)
     suitability[is.na(suitability)] <- NA
     
     # Convert matrices to raster format
@@ -240,7 +240,7 @@ server <- function(input, output, session) {
     output$map_suitability <- renderLeaflet({
       leaflet() %>%
         addTiles() %>%
-        addRasterImage(suitability_raster, colors = colorNumeric("viridis", na.omit(values(suitability_raster)), na.color = "transparent")) %>%
+        addRasterImage(suitability_raster, colors = colorNumeric("viridis", na.omit(values(suitability_raster)), na.color = "transparent"), opacity = 0.7) %>%
         addLegend_decreasing(pal = colorNumeric("viridis", range(na.omit(values(suitability_raster))), na.color = "transparent"),
                               values = range(na.omit(values(suitability_raster))), title = "Habitat Suitability", decreasing = TRUE)
     })
@@ -249,7 +249,7 @@ server <- function(input, output, session) {
     output$map_temp <- renderLeaflet({
       leaflet() %>%
         addTiles() %>%
-        addRasterImage(temp_raster, colors = colorNumeric("plasma", na.omit(values(temp_raster)), na.color = "transparent")) %>%
+        addRasterImage(temp_raster, colors = colorNumeric("plasma", na.omit(values(temp_raster)), na.color = "transparent"), opacity = 0.7) %>%
         addLegend_decreasing(pal = colorNumeric("plasma", range(na.omit(values(temp_raster))), na.color = "transparent"),
                   values = range(na.omit(values(temp_raster))), title = "Temperature", decreasing = TRUE)
     })
@@ -258,7 +258,7 @@ server <- function(input, output, session) {
     output$map_chl <- renderLeaflet({
       leaflet() %>%
         addTiles() %>%
-        addRasterImage(chl_raster, colors = colorNumeric("Greens", na.omit(values(chl_raster)), na.color = "transparent")) %>%
+        addRasterImage(chl_raster, colors = colorNumeric("Greens", na.omit(values(chl_raster)), na.color = "transparent"), opacity = 0.7) %>%
         addLegend_decreasing(pal = colorNumeric("Greens", range(na.omit(values(chl_raster))), na.color = "transparent"),
                   values = range(na.omit(values(chl_raster))), title = "Chlorophyll", decreasing = TRUE)
     })
@@ -267,7 +267,7 @@ server <- function(input, output, session) {
     output$map_ice <- renderLeaflet({
       leaflet() %>%
         addTiles() %>%
-        addRasterImage(ice_raster, colors = colorNumeric("Blues", na.omit(values(ice_raster)), na.color = "transparent")) %>%
+        addRasterImage(ice_raster, colors = colorNumeric("Blues", na.omit(values(ice_raster)), na.color = "transparent"), opacity = 0.7) %>%
         addLegend_decreasing(pal = colorNumeric("Blues", range(na.omit(values(ice_raster))), na.color = "transparent"),
                   values = range(na.omit(values(ice_raster))), title = "Sea Ice Concentration", decreasing = TRUE)
     })
