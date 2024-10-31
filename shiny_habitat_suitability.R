@@ -221,7 +221,7 @@ server <- function(input, output, session) {
     )
     
     ice_data <- switch(input$ice_eq,
-                       "Sigmoid" = sigmoid(-1*ice_data, input$ice_midpoint, input$ice_steepness),
+                       "Sigmoid" = sigmoid(ice_data, input$ice_midpoint, input$ice_steepness),
                        "Lognormal" = lognormal(ice_data, input$ice_mean, input$ice_variance),
                        "No effect" = 1
     )
